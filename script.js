@@ -2,6 +2,7 @@ const BASE_URL = "https://www.omdbapi.com/";
 const API_KEY = "d7ad715c";
 const searchForm = document.querySelector(".search__form");
 const searchBar = document.getElementById("search-bar");
+const main = document.querySelector("main");
 
 async function getMovieDatabase() {
   const response = await fetch(
@@ -22,3 +23,8 @@ const handleSubmit = (e) => {
 };
 
 searchForm.addEventListener("submit", handleSubmit);
+
+// const div = document.createElement("div");
+// div.classList.add("test-div");
+
+// main.appendChild(div);
