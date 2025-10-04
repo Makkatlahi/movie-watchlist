@@ -86,17 +86,17 @@ body {
 }
 
 .search__btn {
-  background-color: rgba(46, 46, 47, 1);
   font-size: 14px;
   border: none;
   padding: 1rem 2.35rem;
-  background-color: rgba(75, 75, 75, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
+  background-color: rgba(75, 75, 75, 1);
   transition: background-color 0.2s ease;
 }
 
 .search__btn:hover {
+  background-color: rgba(46, 46, 47, 1);
   /* background-color: rgba(243, 244, 246, 1); */
 }
 
