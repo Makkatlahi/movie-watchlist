@@ -12,16 +12,20 @@ searchForm.addEventListener("submit", (e) => {
 
 const renderMovies = (data) => {
   main.innerHTML = "";
-  const div = document.createElement("div");
-  div.classList.add("movies");
+  const section = document.createElement("section");
+  section.classList.add("movies-section");
   data.Search.forEach((movie) => {
-    div.innerHTML += `
-          <img src="${movie.Poster}" alt="Movie Poster for ${movie.Title}"/>
+    section.innerHTML += `
+        <section class="movies">
+          <img class="movies__poster" src="${movie.Poster}" alt="Movie Poster for ${movie.Title}"/>
           <div class="movies__description">
             <h2 class="movies__description--title">${movie.Title}</h2>
+            <p class="movies__description--info"><span id="movie-time">116m</span> <span id="movie-genre">Action, Drama, Mystery<span></p>
+            <p class="movies__description--plot">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus reprehenderit iusto molestiae! Consequatur soluta nisi, fuga dignissimos accusantium.</p>
           </div>
+        </section>
       `;
-    main.appendChild(div);
+    main.appendChild(section);
   });
 };
 
