@@ -1,8 +1,3 @@
-// API Configuration
-// The OMDB API requires different query parameters for different types of requests:
-// - '&s=' for searching movies by title/keyword (returns basic info + imdbID)
-// - '&i=' for getting detailed info using the imdbID from search results
-// - '&t=' for searching by exact title (alternative to search, but less flexible)
 const BASE_URL = "https://www.omdbapi.com/";
 const API_KEY = "d7ad715c";
 
@@ -17,9 +12,6 @@ searchForm.addEventListener("submit", (e) => {
   getMovieData();
 });
 
-// Main API Function - Two-Step Process
-// Step 1: Use '&s=' query to search for movies and get basic info + imdbIDs
-// Step 2: Use each imdbID with '&i=' query to get detailed movie information
 // This approach is necessary because search results don't include all properties we need
 async function getMovieData() {
   const userSearchInput = document.getElementById("search-bar").value;
@@ -35,17 +27,17 @@ async function getMovieData() {
     main.innerHTML = "";
 
     // Create an array of promises for detailed API calls
-    // For each movie from search results, we need to make another API call
-    // using the imdbID to get properties like Runtime, Genre, Plot, etc.
+    // This can be thought of making multiple calls to the
+    // movie api using all the ids found in the array of objects
+    // received from the initial API call.
     const movieDetailsPromises = data.Search.map((movie) => {
       return getMovieDetails(movie.imdbID);
     });
 
-    // Wait for ALL detail API calls to complete in parallel (much faster than sequential)
-    // Promise.all() ensures we don't render until all movie details are fetched
+    // Resolve all movie detail promises into an array of movie objects
     const detailedMovies = await Promise.all(movieDetailsPromises);
 
-    // Now we have complete movie objects with all needed properties
+    // now we can render all the movies with the required props
     renderMovies(detailedMovies);
   }
 }
@@ -61,7 +53,6 @@ async function getMovieDetails(imdbID) {
 }
 
 // Render Function
-// Takes the array of detailed movie objects and displays them on the page
 function renderMovies(movies) {
   movies.forEach((movie) => {
     const movieSection = document.createElement("section");
