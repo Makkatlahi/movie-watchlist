@@ -3,6 +3,7 @@ const API_KEY = "d7ad715c";
 
 // DOM Elements
 const searchForm = document.querySelector(".search__form");
+const searchBar = document.getElementById("search-bar");
 const main = document.querySelector("main");
 
 // Form Submission Handler
@@ -10,6 +11,7 @@ const main = document.querySelector("main");
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   getMovieData();
+  searchBar.value = "";
 });
 
 // This approach is necessary because search results don't include all properties we need
@@ -53,8 +55,14 @@ async function getMovieDetails(imdbID) {
 }
 
 // Render Function
+// Takes the array of detailed movie objects and displays them on the page
 function renderMovies(movies) {
   movies.forEach((movie) => {
+    // Replace missing posters with default image
+    if (movie.Poster === "N/A" || !movie.Poster) {
+      movie.Poster = "./images/mvwl-default-poster.jpg";
+    }
+
     const movieSection = document.createElement("section");
     movieSection.classList.add("movies-section");
     movieSection.innerHTML = `
@@ -68,6 +76,7 @@ function renderMovies(movies) {
           <span id="movie-rating">⭐ ${movie.imdbRating}</span>
         </p>
         <p class="movies__description--plot">${movie.Plot}</p>
+        <button id="movie-watchlist"><i class="fa-solid fa-plus"></i> Watchlist</button>
       </div>
        </section>
     `;

@@ -155,10 +155,19 @@ body {
 }
 
 .movies__description--title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-size: 18px;
 }
 
+#movie-rating {
+  font-size: 12px;
+}
+
 .movies__description--info {
+  display: flex;
+  justify-content: space-between;
   font-size: 12px;
 }
 
@@ -166,6 +175,21 @@ body {
 }
 
 #movie-genre {
+}
+
+.fa-plus {
+  border: 2px solid white;
+  border-radius: 50%;
+  font-weight: bolder;
+}
+
+#movie-watchlist {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .movies__description--plot {
