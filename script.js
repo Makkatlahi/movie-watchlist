@@ -68,7 +68,7 @@ function renderMovies(movies) {
     movieSection.classList.add("movies-section");
     movieSection.innerHTML = `
       <section class="movies">
-          <img class="movies__poster" src="${movie.Poster}" alt="Movie Poster for ${movie.Title}"/>
+          <img class="movies__poster" src="${movie.Poster}" onerror="this.src='./images/mvwl-default-poster.jpg'" alt="Movie Poster for ${movie.Title}"/>
       <div class="movies__description">
         <h2 class="movies__description--title">${movie.Title}</h2>
         <p class="movies__description--info">
