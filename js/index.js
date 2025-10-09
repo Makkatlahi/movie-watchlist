@@ -14,6 +14,12 @@ searchForm.addEventListener("submit", (e) => {
   searchBar.value = "";
 });
 
+document.addEventListener("click", (e) => {
+  if (e.target.id === "movie-watchlist") {
+    // add movie title to watchlist
+  }
+});
+
 // This approach is necessary because search results don't include all properties we need
 async function getMovieData() {
   const userSearchInput = document.getElementById("search-bar").value;
@@ -41,6 +47,14 @@ async function getMovieData() {
 
     // now we can render all the movies with the required props
     renderMovies(detailedMovies);
+  } else {
+    main.innerHTML = "";
+    main.innerHTML = `
+          <div class="default-background error">
+            <p class="error-message">Unable to find what you're
+            looking for. Please try another search.</p>
+          </div>
+      `;
   }
 }
 
@@ -68,16 +82,18 @@ function renderMovies(movies) {
     movieSection.innerHTML = `
       <section class="movies">
           <img class="movies__poster" src="${movie.Poster}" onerror="this.src='./images/mvwl-default-poster.jpg'" alt="Movie Poster for ${movie.Title}"/>
-      <div class="movies__description">
-        <h2 class="movies__description--title">${movie.Title}</h2>
-        <p class="movies__description--info">
-          <span id="movie-time">${movie.Runtime}</span>
-          <span id="movie-genre">${movie.Genre}</span>
-          <span id="movie-rating">⭐ ${movie.imdbRating}</span>
-        </p>
-        <p class="movies__description--plot">${movie.Plot}</p>
-        <button id="movie-watchlist"><i class="fa-solid fa-plus"></i> Watchlist</button>
-      </div>
+          <section class="movies__description">
+            <div class="title-container">
+              <h2 class="movies__description--title">${movie.Title}</h2>
+              <span id="movie-rating">⭐ ${movie.imdbRating}</span>
+            </div>
+            <p class="movies__description--info">
+              <span id="movie-time">${movie.Runtime}</span>
+              <span id="movie-genre">${movie.Genre}</span>
+              <button id="movie-watchlist"><i class="fa-solid fa-plus"></i> Watchlist</button>
+            </p>
+            <p class="movies__description--plot">${movie.Plot}</p>
+          </section>
        </section>
     `;
     main.appendChild(movieSection);

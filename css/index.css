@@ -15,7 +15,7 @@ body {
 }
 
 .header {
-  background-image: url("./images/mvwl-hero-img.png");
+  background-image: url("../images/mvwl-hero-img.png");
   background-color: rgb(75, 75, 75);
   background-size: cover;
   background-position: center 22%;
@@ -154,10 +154,13 @@ body {
   gap: 8px;
 }
 
-.movies__description--title {
+.title-container {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+}
+
+.movies__description--title {
   font-size: 18px;
 }
 
@@ -167,8 +170,9 @@ body {
 
 .movies__description--info {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   font-size: 12px;
+  gap: 12px;
 }
 
 #movie-time {
@@ -195,4 +199,12 @@ body {
 .movies__description--plot {
   color: #a5a5a5;
   font-size: 14px;
+}
+
+.error {
+  width: 321px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #787878;
 }
