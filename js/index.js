@@ -6,6 +6,8 @@ const searchForm = document.querySelector(".search__form");
 const searchBar = document.getElementById("search-bar");
 const main = document.querySelector("main");
 
+let movieObject = {};
+
 // Form Submission Handler
 // When user submits search, prevent default form behavior and fetch movie data
 searchForm.addEventListener("submit", (e) => {
@@ -15,8 +17,33 @@ searchForm.addEventListener("submit", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target.id === "movie-watchlist") {
-    // add movie title to watchlist
+  const button = e.target.closest("#movie-watchlist");
+  if (button) {
+    // const movieSection = e.target.closest(".movies-section");
+    // const movieTitle = movieSection.querySelector(
+    //   ".movies__description--title"
+    // ).textContent;
+    const imdbID = button.dataset.imdbId;
+
+    const movieToAdd = movieObject.find((movie) => movie.imdbID === imdbID);
+
+    if (movieToAdd) {
+      const wasAdded = saveToWatchlist(movieToAdd);
+
+      if (wasAdded) {
+        button.innerHTML = `<i class="fa-solid fa-check"></i> Added!`;
+        // setTimeout(() => {
+        //   e.target.innerHTML = `<i class="fa-solid fa-plus"></i> CLICKED THIS ONE`;
+        // }, 2000);
+      } else {
+        button.innerHTML = alert(
+          "This movie was already added to the watchlist. They might contain the same id..."
+        );
+        setTimeout(() => {
+          button.innerHTML = `<i class="fa-solid fa-check"></i> Added!`;
+        }, 1000);
+      }
+    }
   }
 });
 
@@ -44,6 +71,18 @@ async function getMovieData() {
 
     // Resolve all movie detail promises into an array of movie objects
     const detailedMovies = await Promise.all(movieDetailsPromises);
+
+    movieObject = detailedMovies.map((movie) => {
+      return {
+        imdbID: movie.imdbID,
+        poster: movie.Poster,
+        title: movie.Title,
+        genre: movie.Genre,
+        imdbRating: movie.imdbRating,
+        runtime: movie.Runtime,
+        plot: movie.Plot,
+      };
+    });
 
     // now we can render all the movies with the required props
     renderMovies(detailedMovies);
@@ -80,7 +119,7 @@ function renderMovies(movies) {
     const movieSection = document.createElement("section");
     movieSection.classList.add("movies-section");
     movieSection.innerHTML = `
-      <section class="movies">
+      <section id="movies" class="movies">
           <img class="movies__poster" src="${movie.Poster}" onerror="this.src='./images/mvwl-default-poster.jpg'" alt="Movie Poster for ${movie.Title}"/>
           <section class="movies__description">
             <div class="title-container">
@@ -90,7 +129,7 @@ function renderMovies(movies) {
             <p class="movies__description--info">
               <span id="movie-time">${movie.Runtime}</span>
               <span id="movie-genre">${movie.Genre}</span>
-              <button id="movie-watchlist"><i class="fa-solid fa-plus"></i> Watchlist</button>
+              <button id="movie-watchlist" data-imdb-id="${movie.imdbID}"><i class="fa-solid fa-plus"></i> Watchlist</button>
             </p>
             <p class="movies__description--plot">${movie.Plot}</p>
           </section>

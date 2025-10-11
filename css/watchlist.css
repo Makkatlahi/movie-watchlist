@@ -1,0 +1,142 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Inter", san-serif;
+  background-color: rgba(18, 18, 18, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-image: url("../images/mvwl-hero-img.png");
+  background-color: rgb(75, 75, 75);
+  background-size: cover;
+  background-position: center 22%;
+  background-blend-mode: multiply;
+  padding: 4.018rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+  margin: 2.2rem;
+  color: rgba(255, 255, 255, 1);
+}
+.navbar__title {
+  font-size: 42.79px;
+  font-weight: 800;
+}
+.navbar__link {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.navbar__link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.watchlist-main {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 62px;
+}
+
+.default-background {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.default-message {
+  color: #787878;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.fa-plus {
+  border: 2px solid white;
+  border-radius: 50%;
+  font-weight: bolder;
+}
+
+#add-to-watchlist {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.movies-section {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movies {
+  display: flex;
+  width: 462px;
+  gap: 21px;
+  border-bottom: 1.5px solid #2c2c2c;
+  padding: 1.8rem 0;
+}
+
+.movies__poster {
+  width: 99px;
+}
+
+.movies__description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.movies__description--title {
+  font-size: 18px;
+}
+
+#movie-rating {
+  font-size: 12px;
+}
+
+.movies__description--info {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  gap: 12px;
+}
+
+#movie-time {
+}
+
+#movie-genre {
+}
