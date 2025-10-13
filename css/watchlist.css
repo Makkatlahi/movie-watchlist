@@ -49,6 +49,12 @@ body {
   color: inherit;
 }
 
+.navbar__link:hover,
+.navbar__link:focus {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
 .watchlist-main {
   flex: 1;
   position: relative;
@@ -66,6 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
 }
 
 .default-message {
@@ -139,4 +146,24 @@ body {
 }
 
 #movie-genre {
+}
+
+.remove-btn {
+  background-color: rgb(159, 47, 47);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.remove-btn:hover,
+.remove-btn:focus {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.movies__description--plot {
 }

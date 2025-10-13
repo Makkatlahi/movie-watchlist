@@ -12,6 +12,8 @@ document.addEventListener("click", (e) => {
     const imdbID = e.target.closest(".remove-btn").dataset.imdbId;
     removeFromWatchlist(imdbID);
     renderWatchlist(); // Re-render after removal
+  } else if (e.target.closest("#add-to-watchlist")) {
+    window.location.href = "../index.html";
   }
 });
 

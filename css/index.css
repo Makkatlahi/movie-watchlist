@@ -38,6 +38,7 @@ body {
   font-size: 42.79px;
   font-weight: 800;
 }
+
 .navbar__link {
   text-decoration: none;
   font-weight: 700;
@@ -46,6 +47,12 @@ body {
 .navbar__link:visited {
   text-decoration: none;
   color: inherit;
+}
+
+.navbar__link:hover,
+.navbar__link:focus {
+  opacity: 0.8;
+  transform: scale(1.1);
 }
 
 /* .search {
@@ -187,6 +194,7 @@ body {
   font-weight: bolder;
 }
 
+/* Add to watchlist button */
 #movie-watchlist {
   background-color: transparent;
   border: none;
@@ -194,6 +202,12 @@ body {
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
+}
+
+#movie-watchlist:hover,
+#movie-watchlist:focus {
+  opacity: 0.8;
+  transform: scale(1.1);
 }
 
 .movies__description--plot {
